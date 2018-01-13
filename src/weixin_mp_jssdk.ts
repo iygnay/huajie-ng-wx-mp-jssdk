@@ -8,6 +8,8 @@ import {
     OpenLocationRequest, 
     ScanQRCodeRequest,
     InvokeOptions,
+    GetLocationRequest,
+    GetLocationResult,
 } from './models';
 
 declare var wx;
@@ -33,6 +35,16 @@ export class WeixinMpJssdk {
      */
     isWeixinBrowser(){
         return (navigator.userAgent.indexOf('MicroMessenger') != -1);
+    }
+
+    /**
+     * 获取定位信息
+     * 
+     * @param req 
+     * @param options 
+     */
+    async getLocation(req: GetLocationRequest, options?: InvokeOptions) {
+        return this.invoke<GetLocationResult>('getLocation', req, options);
     }
 
     /**
